@@ -2,7 +2,7 @@ replicaCount: 1
 
 image:
   repository: toothless2018/gitops-demo
-  tag: "b0248d9"
+  tag: "882ff29"
 
 service:
   port: 8080
