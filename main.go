@@ -15,6 +15,9 @@ func main() {
 	http.HandleFunc("/ping", func(w http.ResponseWriter, r *http.Request) {
 		fmt.Fprintln(w, "PONG")
 	})
+	http.HandleFunc("/metrics", func(w http.ResponseWriter, r *http.Request) {
+		fmt.Fprintln(w, "CPU: 80%, GPU: 10%, Memory: 20%")
+	})
 	fmt.Println("Listening on :8080")
 	http.ListenAndServe(":8080", nil)
 }
