@@ -27,7 +27,7 @@ func main() {
 	http.HandleFunc("/say", func(w http.ResponseWriter, r *http.Request) {
 		w.Write(v)
 	})
-	
+
 	fmt.Println("Listening on :8080")
 	http.ListenAndServe(":8080", nil)
 }
