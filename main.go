@@ -12,9 +12,6 @@ func main() {
 	http.HandleFunc("/health", func(w http.ResponseWriter, r *http.Request) {
 		fmt.Fprintln(w, "I'm health now, don't worry!")
 	})
-	http.HandleFunc("/ping", func(w http.ResponseWriter, r *http.Request) {
-		fmt.Fprintln(w, "PONG")
-	})
 	http.HandleFunc("/metrics", func(w http.ResponseWriter, r *http.Request) {
 		fmt.Fprintln(w, "CPU: 80%, GPU: 15%, Memory: 20%")
 	})
