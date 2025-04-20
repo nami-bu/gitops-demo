@@ -5,7 +5,7 @@ on:
     branches: [ master ]
 
 env:
-  IMAGE_NAME: toothless/gitops-demo
+  IMAGE_NAME: toothless2018/gitops-demo
 
 jobs:
   build-and-deploy:
@@ -21,8 +21,8 @@ jobs:
       - name: Log in to DockerHub
         uses: docker/login-action@v2
         with:
-          username: toothless2018
-          password: 802300xrc
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Build and push Docker image
         run: |
