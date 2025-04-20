@@ -35,10 +35,16 @@ jobs:
         run: |
           sed -i "s|tag:.*|tag: \"$IMAGE_TAG\"|" k8s/helm-chart/values.yaml
 
-      - name: Commit updated values.yaml
+      - name: Commit and push updated values.yaml
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           git config user.name "landians"
           git config user.email "1309603587@qq.com"
+
+          # 重设 remote URL，使用 token 身份推送
+          git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}
+          
           git add k8s/helm-chart/values.yaml
           git commit -m "Update image tag to $IMAGE_TAG"
-          git push
+          git push origin HEAD:${{ github.ref_name }}
